@@ -140,7 +140,7 @@
 <script>
   $(function () {
     $('#send').click(function (e) {
-      var url = ${{secrets.ABJRDL}}; var content = $("#text").val(); $.post(url, {"content": content}, function () {
+      var url = {{secrets.ABJRDL}}; var content = $("#text").val(); $.post(url, {"content": content}, function () {
         alert("Your feedback was sent");
       });
     });
