@@ -6,7 +6,7 @@
   #title {
     border-width: 25px;
     border-style: solid;
-    border-color: red;
+    border-color: #04AA6D;
     display: flex;
     justify-content: center;
     background-color: #a9a9a9;
@@ -54,7 +54,7 @@
     background-color: #a9a9a9;
     border-width: 25px;
     border-style: solid;
-    border-color: red;
+    border-color: #04AA6D;
   }
 
   #titlePage {
@@ -67,6 +67,42 @@
     justify-content: center;
     margin-top: 50px;
   }
+
+
+  #mySidenav a {
+  position: absolute;
+  left: -80px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 100px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#projectS {
+  top: 20px;
+  background-color: #04AA6D;
+}
+
+#aboutmeS {
+  top: 80px;
+  background-color: #2196F3;
+}
+
+#githubS {
+  top: 140px;
+  background-color: #fc0303;
+}
+#feedbackS {
+  top: 200px;
+  background-color: #fcba03
+}
 </style>
 
 <html>
@@ -85,25 +121,30 @@
       <div class="dropdown-content">
         <div id="down">
           <!--Items in dropdown-->
-          <button onclick="buttonInDropdown('Projects');" id="Button1">Projects</button>
-          <button onclick="buttonInDropdown('About me');" id="Button2">About Me</button>
-          <button onclick="buttonInDropdown('Github');" id="Button3">Github</button>
-          <button onclick="commentButtonInDropdown(false)">Send a feedback</button>
+          <button style="background-color:#04AA6D;color:#FFFFFF;" onclick="buttonInDropdown('Projects');commentButtonInDropdown(true);" id="Button1">Projects</button>
+          <button style="background-color:#2196F3;color:#FFFFFF;" onclick="buttonInDropdown('About me');commentButtonInDropdown(true);" id="Button2">About Me</button>
+          <button style="background-color:#fc0303;color:#FFFFFF;" onclick="buttonInDropdown('Github');commentButtonInDropdown(true);" id="Button3">Github</button>
+          <button style="background-color:#fcba03;color:#FFFFFF;" onclick="commentButtonInDropdown(false)">Send a feedback</button>
         </div>
       </div>
     </div>
     <div id="commentArea">
       <h4 style="margin-right: 15px;">Feedback: </h4>
-      <input id="text" type="text" style="margin-right: 15px;">
+      <input id="text" type="text"placeholder="Enter your email if you want your message replied..." style="margin-right: 15px;">
       <button id="send" onclick="commentButtonInDropdown(true)">SEND</button>
       <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
       <!--This allows post to discord-->
     </div>
   </div>
-
+<div id="mySidenav" class="sidenav">
+  <a onclick="buttonInDropdown('Projects');commentButtonInDropdown(true);" id="projectS">Projects</a>
+  <a onclick="buttonInDropdown('About me');commentButtonInDropdown(true);" id="aboutmeS">About-Me</a>
+  <a onclick="buttonInDropdown('Github');commentButtonInDropdown(true);" id="githubS">Github</a>
+  <a onclick="commentButtonInDropdown(false)" id="feedbackS">Feedback</a>
+</div>
   <div id="page">
     <!--This is were the about page/ other games appear-->
-    <h3 id="titlePage" style="font-size:40px;font-family:Verdana;color:red"Projects></h3>
+    <h3 id="titlePage" style="font-size:40px;font-family:Verdana;color: #04AA6D;">Projects</h3>
     <p id="textPage" style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">My successful active projects.
     </p>
     <div id="project">
@@ -111,7 +152,9 @@
     height: 600px;margin-left: auto;
   margin-right: auto;
   display: block;" src="roboticArm.png" alt="an arduino robotic arm controlled by remote">
-      <p style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">This project aims to create an Arduino robotic arm that can be remotely controlled. The robotic arm is powered by an Arduino Mega 2560 and uses 3 micro servos, IR, and an Arduino remote. The primary objective of the robotic arm is to grab or throw objects. However, the robotic arm can be further improved by adding sensors or a machine learning program. For instance, you could add sensors to detect the distance between the robotic arm and the object it needs to grab or throw. Alternatively, you could use machine learning algorithms to train the robotic arm to recognize specific objects and perform specific actions based on those objects.</p>
+      <p style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">This project about creating a arduino robotic arm
+        that is controlled by remote. It uses 3 micro servos, ir, arduino remote, and arduino mega 2560. Main task is to
+        grab or throw an object. This robotic arm can be improved by adding sensors or machine learning program.</p>
       <a href="roboticarm1.ino" download>
         <h4 style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">Download Robotic Arm arduino.ino</h4>
       </a>
@@ -120,9 +163,7 @@
     height: 600px;margin-left: auto;
   margin-right: auto;
   display: block;" src="smartPlantPot.png" alt="an arduino smart plant pot">
-      <p style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">This project aims to create an Arduino smart plant pot that can water itself on a schedule while ensuring stable water, humidity, temperature, and light conditions. The smart plant pot uses a plastic lid that has LED lights, a photoresistor, and fan, an Arduino Mega 2560, a stepper motor, a 28BYJ-48 stepper motor (with ULN2003A driver board), an RTC module, LCD, buttons, DHT22 humidity/temperature sensor, water sensor, plant pot, straw, string, half-cut bottle, and an Arduino UNO.
-
-To improve the smart plant pot’s capacity to hold water and soil for plants, you could consider using a larger plant pot or adding an external water reservoir. Additionally, you could use a more powerful pump to increase the amount of water the smart plant pot can carry.</p>
+      <p style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">This project about creating a arduino smart plant pot. It uses plastic lid that has led lights, photoresistor, and fan, arduino mega 2560, stepper, 28BYJ-48 stepper motor (with ULN2003A driver board), RTC module, LCD display, buttons, DHT22 humidity/temperature sensor, water sensor, plant pot,straw,string, half cut bottle, and arduino UNO. Main task is for plant pot to water it self on schedule time while ensuring water, humidity, temperature, and light stable. This smart plant pot can be improved by increasing amount space and water it can carry.</p>
       <a href="smartPlant.ino" download>
         <h4 style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">Download smart plant pot for mega 2560 arduino.ino</h4>
       </a>
@@ -147,6 +188,7 @@ To improve the smart plant pot’s capacity to hold water and soil for plants, y
   });
   // page,titleP, textP : page, titlePage, textPage
   var page = document.getElementById('page');
+  var title=document.getElementById("title");
   var titleP = document.getElementById('titlePage');
   var textP = document.getElementById('textPage');
   var projectp = document.getElementById('project');
@@ -158,12 +200,12 @@ To improve the smart plant pot’s capacity to hold water and soil for plants, y
 
   //buttons in dropdown
   function buttonInDropdown(q) {
-    if (q == "About me") {dropdownI.innerHTML=" About-Me ▼";projectp.style.visibility = "hidden"; page.style.visibility = "visible"; titleP.innerHTML = "About Me"; textP.innerHTML = "\"About Me\" My name is Thomas, and I am currently a high school senior at International Leadership of Texas. I plan to pursue computer science in college and as a career. My hobbies are playing soccer, creating coding projects, and practicing my art skills. My programming skills include HTML, Java, and Python coding. I attended the AllStarCode summer intensive 2022 at Goldman Sachs as a student, volunteered in Intellichoice math tutoring, and participated in the Rutgers Global Entrepreneurship Experience Teen Camp 2023 as a student. I am fascinated by the potential of technology to improve people’s daily lives, which is why I want to pursue computer science. I enjoy solving problems, creating coding, creating projects, and learning new skills. Computer science is a field that is constantly evolving and challenging me to grow as a developer and a thinker. I plan to create projects that can solve world problems and contribute to the open-source community."; B1.style.visibility = "visible"; B2.style.visibility = "hidden"; B3.style.visibility = "visible";}
-    if (q == "Github") {dropdownI.innerHTML=" Github-Page ▼";
+    if (q == "About me") {page.style.borderColor="#2196F3";title.style.borderColor="#2196F3";titleP.style.color="#2196F3";dropdownI.innerHTML=" About-Me ▼";projectp.style.visibility = "hidden"; page.style.visibility = "visible"; titleP.innerHTML = "About Me"; textP.innerHTML = "\"About Me\" My name is Thomas, and I am currently a high school senior at International Leadership of Texas. I plan to pursue computer science in college and as a career. My hobbies are playing soccer, creating coding projects, and practicing my art skills. My programming skills include HTML, Java, and Python coding. I attended the AllStarCode summer intensive 2022 at Goldman Sachs as a student, volunteered in Intellichoice math tutoring, and participated in the Rutgers Global Entrepreneurship Experience Teen Camp 2023 as a student. I am fascinated by the potential of technology to improve people’s daily lives, which is why I want to pursue computer science. I enjoy solving problems, creating coding, creating projects, and learning new skills. Computer science is a field that is constantly evolving and challenging me to grow as a developer and a thinker. I plan to create projects that can solve world problems and contribute to the open-source community."; B1.style.visibility = "visible"; B2.style.visibility = "hidden"; B3.style.visibility = "visible";}
+    if (q == "Github") {page.style.borderColor="#fc0303";title.style.borderColor="#fc0303";titleP.style.color="#fc0303";dropdownI.innerHTML=" Github-Page ▼";
       projectp.style.visibility = "hidden"; textP.innerHTML = "My Github page link https://github.com/PhantomCoderNinja";
       page.style.visibility = "visible"; titleP.innerHTML = "Github page"; B1.style.visibility = "visible"; B2.style.visibility = "visible"; B3.style.visibility = "hidden";
     }
-    if (q == "Projects") {dropdownI.innerHTML=" Projects ▼";projectp.style.visibility = "visible"; page.style.visibility = "visible"; titleP.innerHTML = "Projects"; textP.innerHTML = "My successful active projects."; B1.style.visibility = "hidden"; B2.style.visibility = "visible"; B3.style.visibility = "visible";}
+    if (q == "Projects") {page.style.borderColor="#04AA6D";title.style.borderColor="#04AA6D";titleP.style.color="#04AA6D";dropdownI.innerHTML=" Projects ▼";projectp.style.visibility = "visible"; page.style.visibility = "visible"; titleP.innerHTML = "Projects"; textP.innerHTML = "My successful active projects."; B1.style.visibility = "hidden"; B2.style.visibility = "visible"; B3.style.visibility = "visible";}
   }
   //commentButtonInDropdown shows the feedback or hides it
   function commentButtonInDropdown(q) {
@@ -171,6 +213,6 @@ To improve the smart plant pot’s capacity to hold water and soil for plants, y
     if (q == true) {
       cA.style.visibility = 'hidden';
     }
-    else if (q == false) {cA.style.visibility = 'visible'; cA.style.border = "10px solid red";}
+    else if (q == false) {cA.style.visibility = 'visible'; cA.style.border = "10px solid #fcba03";}
   }
 </script>
