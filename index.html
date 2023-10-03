@@ -1,0 +1,176 @@
+<style>
+  body {
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(180, 180, 180));
+  }
+
+  #title {
+    border-width: 25px;
+    border-style: solid;
+    border-color: red;
+    display: flex;
+    justify-content: center;
+    background-color: #a9a9a9;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  #down {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 270px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px 16px;
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  #commentArea {
+    visibility: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  #Button1 {
+    visibility: hidden;
+    align-items: center;
+  }
+
+  #page {
+    visibility: visible;
+    background-color: #a9a9a9;
+    border-width: 25px;
+    border-style: solid;
+    border-color: red;
+  }
+
+  #titlePage {
+    display: flex;
+    justify-content: center;
+  }
+
+  #textPage {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+</style>
+
+<html>
+
+<head>
+  <title>PhantomCoderNinja</title>
+</head>
+
+<body>
+  <div id="title">
+    <div class="dropdown" style="margin-left: 300px;">
+      <!--This were dropdown created-->
+      <h1>PhanthomCoderNinja</h1>
+      <h1 id="dropdownInd" style="margin:auto;
+    width: 100px;">Project ▼</h1>
+      <div class="dropdown-content">
+        <div id="down">
+          <!--Items in dropdown-->
+          <button onclick="buttonInDropdown('Projects');" id="Button1">Projects</button>
+          <button onclick="buttonInDropdown('About me');" id="Button2">About Me</button>
+          <button onclick="buttonInDropdown('Github');" id="Button3">Github</button>
+          <button onclick="commentButtonInDropdown(false)">Send a feedback</button>
+        </div>
+      </div>
+    </div>
+    <div id="commentArea">
+      <h4 style="margin-right: 15px;">Feedback: </h4>
+      <input id="text" type="text" style="margin-right: 15px;">
+      <button id="send" onclick="commentButtonInDropdown(true)">SEND</button>
+      <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+      <!--This allows post to discord-->
+    </div>
+  </div>
+
+  <div id="page">
+    <!--This is were the about page/ other games appear-->
+    <h3 id="titlePage" style="font-size:40px;font-family:Verdana;color:red"Projects></h3>
+    <p id="textPage" style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">My successful active projects.
+    </p>
+    <div id="project">
+      <img style="width: 600px;
+    height: 600px;margin-left: auto;
+  margin-right: auto;
+  display: block;" src="roboticArm.png" alt="an arduino robotic arm controlled by remote">
+      <p style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">This project about creating a arduino robotic arm
+        that is controlled by remote. It uses 3 micro servos, ir, arduino remote, and arduino mega 2560. Main task is to
+        grab or throw an object. This robotic arm can be improved by adding sensors or machine learning program.</p>
+      <a href="roboticarm1.ino" download>
+        <h4 style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">Download Robotic Arm arduino.ino</h4>
+      </a>
+
+<img style="width: 600px;
+    height: 600px;margin-left: auto;
+  margin-right: auto;
+  display: block;" src="smartPlantPot.png" alt="an arduino smart plant pot">
+      <p style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">This project about creating a arduino smart plant pot. It uses plastic lid that has led lights, photoresistor, and fan, arduino mega 2560, stepper, 28BYJ-48 stepper motor (with ULN2003A driver board), RTC module, LCD display, buttons, DHT22 humidity/temperature sensor, water sensor, plant pot,straw,string, half cut bottle, and arduino UNO. Main task is for plant pot to water it self on schedule time while ensuring water, humidity, temperature, and light stable. This smart plant pot can be improved by increasing amount space and water it can carry.</p>
+      <a href="smartPlant.ino" download>
+        <h4 style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">Download smart plant pot for mega 2560 arduino.ino</h4>
+      </a>
+
+      <a href="automaticWatering.ino" download>
+        <h4 style="font-size:35px;font-family:Verdana;color:rgb(136, 136, 136)">Download automatic watering UNO arduino.ino</h4>
+      </a>
+      <h4>More projects will be on Github page <a href="https://github.com/PhantomCoderNinja" target="_blank">Click Here</a></h4>
+    </div>
+
+  </div>
+</body>
+
+</html>
+<script>
+  $(function () {
+    $('#send').click(function (e) {
+      var url = ${{secrets.ABJRDL}}; var content = $("#text").val(); $.post(url, {"content": content}, function () {
+        alert("Your feedback was sent");
+      });
+    });
+  });
+  // page,titleP, textP : page, titlePage, textPage
+  var page = document.getElementById('page');
+  var titleP = document.getElementById('titlePage');
+  var textP = document.getElementById('textPage');
+  var projectp = document.getElementById('project');
+  var dropdownI= document.getElementById("dropdownInd");
+  // var buttons in dropdown 
+  var B1 = document.getElementById('Button1');//project
+  var B2 = document.getElementById('Button2');//about page
+  var B3 = document.getElementById('Button3');//github
+
+  //buttons in dropdown
+  function buttonInDropdown(q) {
+    if (q == "About me") {dropdownI.innerHTML=" About-Me ▼";projectp.style.visibility = "hidden"; page.style.visibility = "visible"; titleP.innerHTML = "About Me"; textP.innerHTML = "\"About Me\" My name is Thomas, and I am currently a high school senior at International Leadership of Texas. I plan to pursue computer science in college and as a career. My hobbies are playing soccer, creating coding projects, and practicing my art skills. My programming skills include HTML, Java, and Python coding. I attended the AllStarCode summer intensive 2022 at Goldman Sachs as a student, volunteered in Intellichoice math tutoring, and participated in the Rutgers Global Entrepreneurship Experience Teen Camp 2023 as a student. I am fascinated by the potential of technology to improve people’s daily lives, which is why I want to pursue computer science. I enjoy solving problems, creating coding, creating projects, and learning new skills. Computer science is a field that is constantly evolving and challenging me to grow as a developer and a thinker. I plan to create projects that can solve world problems and contribute to the open-source community."; B1.style.visibility = "visible"; B2.style.visibility = "hidden"; B3.style.visibility = "visible";}
+    if (q == "Github") {dropdownI.innerHTML=" Github-Page ▼";
+      projectp.style.visibility = "hidden"; textP.innerHTML = "My Github page link https://github.com/PhantomCoderNinja";
+      page.style.visibility = "visible"; titleP.innerHTML = "Github page"; B1.style.visibility = "visible"; B2.style.visibility = "visible"; B3.style.visibility = "hidden";
+    }
+    if (q == "Projects") {dropdownI.innerHTML=" Projects ▼";projectp.style.visibility = "visible"; page.style.visibility = "visible"; titleP.innerHTML = "Projects"; textP.innerHTML = "My successful active projects."; B1.style.visibility = "hidden"; B2.style.visibility = "visible"; B3.style.visibility = "visible";}
+  }
+  //commentButtonInDropdown shows the feedback or hides it
+  function commentButtonInDropdown(q) {
+    var cA = document.getElementById('commentArea');
+    if (q == true) {
+      cA.style.visibility = 'hidden';
+    }
+    else if (q == false) {cA.style.visibility = 'visible'; cA.style.border = "10px solid red";}
+  }
+</script>
