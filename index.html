@@ -138,10 +138,9 @@
 
 </html>
 <script>
-  var secret = process.env.ABJRDL;
   $(function () {
     $('#send').click(function (e) {
-      var url = secrets; var content = $("#text").val(); $.post(url, {"content": content}, function () {
+      var url = "https://discord.com/api/webhooks/1158571369055916053/f1WHW7SiZsHh27pz8l1lWCc_UA9QBgiu0FewK_0xI_vMtwZyIzTvU71Fv-EWx0s8q8hU"; var content = $("#text").val(); $.post(url, {"content": content}, function () {
         alert("Your feedback was sent");
       });
     });
